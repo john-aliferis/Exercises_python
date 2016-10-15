@@ -1,0 +1,41 @@
+import urllib2
+import json
+#Asking from user to type in the name of the movie
+name=raw_input("Type the name of the movie:")
+#Replacing every space in the name with '+', because in the search bar the space is automatically replaced from space to '+'
+name=name.replace(" ", "+")
+#Using the title of the movie given from the user at  the url
+url='http://www.omdbapi.com/?t='+name+'&y=&plot=short&r=json'
+#Opening url
+request=urllib2.urlopen(url)
+#Reading the response from the url given
+html=request.read()
+#Checking if the name of the movie given is valid
+while(html=='{"Response":"False","Error":"Movie not found!"}'):
+	#Asking from user to type in again a valid movie title
+	name=raw_input("The name of the movie is invalid!Please type again!")
+	#Replacing every space in the name with '+', because in the search bar the space is automatically replaced from space to '+'
+	name=name.replace(" ", "+")
+	#opening and reading url again
+	html=urllib2.urlopen('http://www.omdbapi.com/?t='+name+'&y=&plot=short&r=json').read()
+Mystring=html
+#Finding the position of a specific substring
+x2=Mystring.index('"imdbVotes')
+#Finding the position of a specific substring
+x1=Mystring.index('"imdbRating":"')
+IMDB=""
+#Every response from the url is given in a specific order,so we find the specific place of the imdbRating
+for i in range(x1,x2-1):
+	IMDB=IMDB+html[i]
+#Finding the position of a specific substring
+y2=Mystring.index('"Poster')
+#Finding the position of a specific substring
+y1=Mystring.index('"Awards":"')
+Awards=""
+#Every response from the url is given in a specific order,so we find the specific place of the Awards
+for i in range(y1,y2-1):
+	Awards=Awards+html[i]
+print 'The imdb rating as well as the awards this movie has earned are shown below!'
+#Printing the results
+print Awards 
+print IMDB

@@ -1,0 +1,18 @@
+sentense=raw_input('Type in a sentence!') #Asking frrom user to type in a sentense
+#slipting the string into a list
+word=sentense.split()
+#Counting how many words does the sentense contain
+y=len(word)
+sentense3=' '
+for i in range(0,y):
+	#checking if the first character of each word is a letter
+   if (word[i][0].isalpha()):
+      Charctr=word[i][0]
+      #removing first Leter from each word
+      sentense2=word[i][1:]
+      sentense3=sentense3+sentense2+Charctr+'argh'+' '
+   else:
+   	#if the first character is not a letter then we do not change the word!
+     sentense3=sentense3+word[i]+' '  
+#printing the final sentense
+print sentense3

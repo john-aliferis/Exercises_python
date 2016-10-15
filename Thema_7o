@@ -1,0 +1,24 @@
+#Asking from user to input a number!
+Number=raw_input('Give number:')
+x=Number.isdigit()
+#Checking if the character given is a positive number!
+while(x!=True):
+	Number=raw_input('Please type a positive number!')
+	x=Number.isdigit()
+# end of while
+#Parsing the string positive number given into a float!
+Number1=float(Number)
+l=1
+k=1
+while(Number1>=l):
+	if(l==Number1):
+		print 'True'
+		break
+	else:
+	 k=k+2
+	 l=l+k
+if (Number1==0):
+	print 'True!'
+elif(Number1<l):
+	print 'False!'
+#end of programm
